@@ -15,8 +15,7 @@ public Vacina cadastrarVacina(Vacina novaVacina) {
 		//Conectar ao banco
 				Connection conexao = Banco.getConnection();
 				String sql = "INSERT INTO VACINA (PAISORIGEM, ESTADOPESQUISA, DATAINICIO, RESPONSAVEL) "
-						+ " VALUES (?,?,?,?) ";
-				
+						+ " VALUES (?,?,?,?) ";		
 				PreparedStatement query = Banco.getPreparedStatementWithPk(conexao, sql);
 				
 				//Executar o INSERT
@@ -34,8 +33,7 @@ public Vacina cadastrarVacina(Vacina novaVacina) {
 						}
 				} catch (SQLException e) {
 					System.out.println("Erro ao inserir vacina. \nCausa: " + e.getMessage());
-				} finally {
-					
+				} finally {				
 					//Fechar a conex�o
 					Banco.closePreparedStatement(query);
 					Banco.closeConnection(conexao);

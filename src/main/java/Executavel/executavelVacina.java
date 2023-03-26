@@ -14,10 +14,6 @@ public class executavelVacina {
 		Vacina v1 = new Vacina(null, "Alemanha", 1, "23/07/2022", "Butantan");
 		Vacina v2 = new Vacina(null, "Peru", 2, "05/02/2021", "Pfizer");
 		Vacina v3 = new Vacina(null, "China", 3, "11/01/2023", "Leonardo Leao");
-
-		
-		
-
 	}
 
 }

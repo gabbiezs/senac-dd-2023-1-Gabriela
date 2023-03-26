@@ -59,12 +59,14 @@ import model.vo.vacina.Pessoa;
 				query.setString(4, pessoaAtualizada.getCpf());
 				query.setInt(5, pessoaAtualizada.getTipoPessoa());
 				query.setInt(6, pessoaAtualizada.getId());
-		
+				
 				int quantidadeLinhasAtualizadas = query.executeUpdate();
 				atualizou = quantidadeLinhasAtualizadas > 0;
+				
 			} catch (SQLException excecao) {
 				System.out.println("Erro ao atualizar a pessoa. "
 				+ "\n Causa: " + excecao.getMessage());
+				
 			}finally {
 				Banco.closePreparedStatement(query);
 				Banco.closeConnection(conexao);
