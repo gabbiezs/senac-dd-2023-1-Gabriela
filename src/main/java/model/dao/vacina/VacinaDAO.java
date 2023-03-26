@@ -35,6 +35,7 @@ public Vacina cadastrarVacina(Vacina novaVacina) {
 				} catch (SQLException e) {
 					System.out.println("Erro ao inserir vacina. \nCausa: " + e.getMessage());
 				} finally {
+					
 					//Fechar a conex�o
 					Banco.closePreparedStatement(query);
 					Banco.closeConnection(conexao);

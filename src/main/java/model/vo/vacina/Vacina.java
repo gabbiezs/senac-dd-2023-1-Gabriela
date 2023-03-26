@@ -16,7 +16,7 @@ public class Vacina {
 		this.dataInicio = dataInicio;
 		this.responsavel = responsavel;
 	}
-
+	
 	public Vacina() {
 		super();
 		// TODO Auto-generated constructor stub

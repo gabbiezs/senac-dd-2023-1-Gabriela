@@ -93,6 +93,7 @@ import model.vo.vacina.Pessoa;
 					pessoaConsultada.setCpf(resultado.getString("CPF"));
 					pessoaConsultada.setTipoPessoa(resultado.getInt("TipoUsuario"));
 				}
+				
 			} catch (SQLException e) {
 				System.out.println("Erro ao buscar pessoa com id: + " + id 
 							+ "\n Causa: " + e.getMessage());	

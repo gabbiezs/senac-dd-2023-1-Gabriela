@@ -8,7 +8,6 @@ public class Pessoa {
 	private String sexo;
 	private String cpf;
 	private int tipoPessoa;
-	
 	public Pessoa(Integer id, String nome, String dataNascimento, String sexo, String cpf, int tipoPessoa) {
 		super();
 		Id = id;
@@ -18,7 +17,7 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.tipoPessoa = tipoPessoa;
 	}
-
+	
 	public Pessoa() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -71,5 +70,6 @@ public class Pessoa {
 	public void setTipoPessoa(int tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
 	}
+	
 	
 }
