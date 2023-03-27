@@ -7,8 +7,9 @@ public class Pessoa {
 	private String dataNascimento;
 	private String sexo;
 	private String cpf;
-	private int tipoPessoa;
-	public Pessoa(Integer id, String nome, String dataNascimento, String sexo, String cpf, int tipoPessoa) {
+	private TipoPessoa tipoPessoa;
+	
+	public Pessoa(Integer id, String nome, String dataNascimento, String sexo, String cpf, TipoPessoa tipoPessoa) {
 		super();
 		Id = id;
 		this.nome = nome;
@@ -17,7 +18,7 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.tipoPessoa = tipoPessoa;
 	}
-	
+
 	public Pessoa() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -26,7 +27,7 @@ public class Pessoa {
 	public Integer getId() {
 		return Id;
 	}
-	
+
 	public void setId(Integer id) {
 		Id = id;
 	}
@@ -63,13 +64,12 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public int getTipoPessoa() {
+	public TipoPessoa getTipoPessoa() {
 		return tipoPessoa;
 	}
 
-	public void setTipoPessoa(int tipoPessoa) {
+	public void setTipoPessoa(TipoPessoa tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
 	}
-	
 	
 }

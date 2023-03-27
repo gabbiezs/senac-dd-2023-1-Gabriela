@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import model.dao.Banco;
 import model.vo.vacina.Pessoa;
+import model.vo.vacina.TipoPessoa;
 
 	public class PessoaDAO {
 
@@ -25,7 +26,7 @@ import model.vo.vacina.Pessoa;
 				query.setString(2, novaPessoa.getDataNascimento());
 				query.setString(3, novaPessoa.getSexo());
 				query.setString(4, novaPessoa.getCpf());
-				query.setInt(5, novaPessoa.getTipoPessoa());
+				query.setObject(5, novaPessoa.getTipoPessoa());
 				query.execute();
 				
 				//Preencher o ID gerado no banco no objeto
@@ -57,7 +58,7 @@ import model.vo.vacina.Pessoa;
 				query.setString(2, pessoaAtualizada.getDataNascimento());
 				query.setString(3, pessoaAtualizada.getSexo());
 				query.setString(4, pessoaAtualizada.getCpf());
-				query.setInt(5, pessoaAtualizada.getTipoPessoa());
+				query.setObject(5, pessoaAtualizada.getTipoPessoa());
 				query.setInt(6, pessoaAtualizada.getId());
 				
 				int quantidadeLinhasAtualizadas = query.executeUpdate();
@@ -88,12 +89,12 @@ import model.vo.vacina.Pessoa;
 		
 				if(resultado.next()) {
 					pessoaConsultada = new Pessoa();
-					pessoaConsultada.setId(resultado.getInt("id"));
-					pessoaConsultada.setNome(resultado.getString("Nome"));
-					pessoaConsultada.setDataNascimento(resultado.getString("DataNascimento"));
-					pessoaConsultada.setSexo(resultado.getString("Sexo"));
+					pessoaConsultada.setId(resultado.getInt("IDPESSOA"));
+					pessoaConsultada.setNome(resultado.getString("NOME"));
+					pessoaConsultada.setDataNascimento(resultado.getString("DATANASCIMENTO"));
+					pessoaConsultada.setSexo(resultado.getString("SEXO"));
 					pessoaConsultada.setCpf(resultado.getString("CPF"));
-					pessoaConsultada.setTipoPessoa(resultado.getInt("TipoUsuario"));
+					pessoaConsultada.setTipoPessoa(TipoPessoa.getTipoPessoaPorValor(resultado.getInt("IDTIPOPESSOA")));
 				}
 				
 			} catch (SQLException e) {

@@ -1,22 +1,27 @@
 package model.vo.vacina;
 
+import java.time.LocalDate;
+
 public class Vacina {
 	
 	private Integer Id;
+	private String nomeVacina;
 	private String paisOrigem;
-	private int estadoPesquisa;
-	private String dataInicio;
-	private String responsavel;
+	private EstagioPesquisa estagioPesquisa;
+	private LocalDate dataInicio;
+	private Pessoa responsavel;
 	
-	public Vacina(Integer id, String paisOrigem, int estadoPesquisa, String dataInicio, String responsavel) {
+	public Vacina(Integer id, String nomeVacina, String paisOrigem, EstagioPesquisa estagioPesquisa,
+			LocalDate dataInicio, Pessoa responsavel) {
 		super();
 		Id = id;
+		this.nomeVacina = nomeVacina;
 		this.paisOrigem = paisOrigem;
-		this.estadoPesquisa = estadoPesquisa;
+		this.estagioPesquisa = estagioPesquisa;
 		this.dataInicio = dataInicio;
 		this.responsavel = responsavel;
 	}
-	
+
 	public Vacina() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -25,9 +30,17 @@ public class Vacina {
 	public Integer getId() {
 		return Id;
 	}
-	
+
 	public void setId(Integer id) {
 		Id = id;
+	}
+
+	public String getNomeVacina() {
+		return nomeVacina;
+	}
+
+	public void setNomeVacina(String nomeVacina) {
+		this.nomeVacina = nomeVacina;
 	}
 
 	public String getPaisOrigem() {
@@ -38,28 +51,28 @@ public class Vacina {
 		this.paisOrigem = paisOrigem;
 	}
 
-	public int getEstadoPesquisa() {
-		return estadoPesquisa;
+	public EstagioPesquisa getEstagioPesquisa() {
+		return estagioPesquisa;
 	}
 
-	public void setEstadoPesquisa(int estadoPesquisa) {
-		this.estadoPesquisa = estadoPesquisa;
+	public void setEstagioPesquisa(EstagioPesquisa estagioPesquisa) {
+		this.estagioPesquisa = estagioPesquisa;
 	}
 
-	public String getDataInicio() {
+	public LocalDate getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(String dataInicio) {
+	public void setDataInicio(LocalDate dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	public String getResponsavel() {
+	public Pessoa getResponsavel() {
 		return responsavel;
 	}
 
-	public void setResponsavel(String responsavel) {
+	public void setResponsavel(Pessoa responsavel) {
 		this.responsavel = responsavel;
 	}
-
+	
 }
