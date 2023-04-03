@@ -4,10 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import model.dao.Banco;
+import model.vo.vacina.EstagioPesquisa;
 import model.vo.vacina.Pessoa;
 import model.vo.vacina.TipoPessoa;
+import model.vo.vacina.Vacina;
 
 	public class PessoaDAO {
 
@@ -15,7 +20,7 @@ import model.vo.vacina.TipoPessoa;
 		
 		//Conectar ao banco
 				Connection conexao = Banco.getConnection();
-				String sql = "INSERT INTO PESSOA (NOME, DATANASCIMENTO, SEXO, CPF, TIPOPESSOA) "
+				String sql = "INSERT INTO PESSOA (NOME, DATANASCIMENTO, SEXO, CPF, IDTIPOPESSOA) "
 						+ " VALUES (?,?,?,?,?) ";
 				
 				PreparedStatement query = Banco.getPreparedStatementWithPk(conexao, sql);
@@ -26,7 +31,7 @@ import model.vo.vacina.TipoPessoa;
 				query.setString(2, novaPessoa.getDataNascimento());
 				query.setString(3, novaPessoa.getSexo());
 				query.setString(4, novaPessoa.getCpf());
-				query.setObject(5, novaPessoa.getTipoPessoa());
+				query.setInt(5, novaPessoa.getTipoPessoa().getValor());
 				query.execute();
 				
 				//Preencher o ID gerado no banco no objeto
@@ -35,7 +40,7 @@ import model.vo.vacina.TipoPessoa;
 						novaPessoa.setId(resultado.getInt(1));
 						}
 				} catch (SQLException e) {
-					System.out.println("Erro ao inserir telefone. \nCausa: " + e.getMessage());
+					System.out.println("Erro ao cadastrar pessoa. \nCausa: " + e.getMessage());
 				} finally {
 					//Fechar a conex�o
 					Banco.closePreparedStatement(query);
@@ -50,15 +55,15 @@ import model.vo.vacina.TipoPessoa;
 			Connection conexao = Banco.getConnection();
 			String sql = " UPDATE PESSOA "
 			   + " SET NOME = ?, DATANASCIMENTO = ?, SEXO = ?, "
-			   + " CPF = ? , TIPOPESSOA = ? "
-			   + " WHERE ID = ? ";
+			   + " CPF = ? , IDTIPOPESSOA = ? "
+			   + " WHERE IDPESSOA = ? ";
 			PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
 			try {
 				query.setString(1, pessoaAtualizada.getNome());
 				query.setString(2, pessoaAtualizada.getDataNascimento());
 				query.setString(3, pessoaAtualizada.getSexo());
 				query.setString(4, pessoaAtualizada.getCpf());
-				query.setObject(5, pessoaAtualizada.getTipoPessoa());
+				query.setInt(5, pessoaAtualizada.getTipoPessoa().getValor());
 				query.setInt(6, pessoaAtualizada.getId());
 				
 				int quantidadeLinhasAtualizadas = query.executeUpdate();
@@ -80,7 +85,7 @@ import model.vo.vacina.TipoPessoa;
 			Pessoa pessoaConsultada = null;
 			Connection conexao = Banco.getConnection();
 			String sql =  " SELECT * FROM PESSOA "
-					+ " WHERE ID = ?";
+					+ " WHERE IDPESSOA = ?";
 			PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
 			
 			try {
@@ -104,13 +109,45 @@ import model.vo.vacina.TipoPessoa;
 	
 			return pessoaConsultada;
 		}
+		
+		public ArrayList<Pessoa> consultarTodos() {
+			Connection conexao = Banco.getConnection();
+			ArrayList<Pessoa> listaPessoa = new ArrayList<Pessoa>();
+			String sql =  " SELECT * FROM PESSOA";
+			PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
+			try {
+			ResultSet resultado = query.executeQuery();	
+				while (resultado.next()) {
+					Pessoa pessoa = converterDeResultSetParaEntidade(resultado);
+				listaPessoa.add(pessoa);
+			} 
+		} catch (SQLException e) {
+			System.out.println("Erro ao buscar todas as pessoas. Causa: " + e.getMessage());	
+		} finally {
+			Banco.closePreparedStatement(query);
+			Banco.closeConnection(conexao);
+		}
+			return listaPessoa;
+		}
+		
+		private Pessoa converterDeResultSetParaEntidade(ResultSet resultado) throws SQLException {
+			DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			Pessoa pessoa = new Pessoa();
+			pessoa.setId(resultado.getInt("IDPESSOA"));
+			pessoa.setNome(resultado.getString("NOME"));
+			pessoa.setDataNascimento(resultado.getString("DATANASCIMENTO"));
+			pessoa.setSexo(resultado.getString("SEXO"));
+			pessoa.setCpf(resultado.getString("CPF"));
+			pessoa.setTipoPessoa(TipoPessoa.getTipoPessoaPorValor(resultado.getInt("IDTIPOPESSOA")));
+			return pessoa;
+		}
 
 		public boolean excluir(int id) {
 			boolean excluiu = false;
 	
 			Connection conexao = Banco.getConnection();
 			String sql = " DELETE FROM PESSOA "
-					+ " WHERE ID = ? ";
+					+ " WHERE IDPESSOA = ? ";
 			PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
 			try {
 				query.setInt(1, id);

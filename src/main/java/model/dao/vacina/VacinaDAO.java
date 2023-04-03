@@ -19,7 +19,7 @@ public Vacina cadastrarVacina(Vacina novaVacina) {
 
 		//Conectar ao banco
 				Connection conexao = Banco.getConnection();
-				String sql = "INSERT INTO VACINA (NOMEVACINA, PAISORIGEM, ESTADOPESQUISA, DATAINICIO, RESPONSAVEL) "
+				String sql = "INSERT INTO VACINA (NOMEVACINA, PAISORIGEM, ESTADOPESQUISA, DATAINICIO, IDPESSOA) "
 						+ " VALUES (?,?,?,?,?) ";		
 				PreparedStatement query = Banco.getPreparedStatementWithPk(conexao, sql);
 				
@@ -29,7 +29,7 @@ public Vacina cadastrarVacina(Vacina novaVacina) {
 				query.setString(2, novaVacina.getPaisOrigem());
 				query.setInt(3, novaVacina.getEstagioPesquisa().getValor());
 				query.setDate(4, java.sql.Date.valueOf(novaVacina.getDataInicio()));
-				query.setString(5, novaVacina.getResponsavel().getNome());
+				query.setInt(5, novaVacina.getResponsavel().getId());
 				query.execute();
 				
 				//Preencher o ID gerado no banco no objeto
@@ -40,7 +40,7 @@ public Vacina cadastrarVacina(Vacina novaVacina) {
 				} catch (SQLException e) {
 					System.out.println("Erro ao inserir vacina. \nCausa: " + e.getMessage());
 				} finally {				
-					//Fechar a conexão
+					//Fechar a conexï¿½o
 					Banco.closePreparedStatement(query);
 					Banco.closeConnection(conexao);
 				}
@@ -53,7 +53,7 @@ public Vacina cadastrarVacina(Vacina novaVacina) {
 			Connection conexao = Banco.getConnection();
 			String sql = " UPDATE VACINA "
 			   + " SET NOMEVACINA = ?, PAISORIGEM = ?, ESTADOPESQUISA = ?, DATAINICIO = ?, "
-			   + " RESPONSAVEL = ?"
+			   + " IDPESSOA = ?"
 			   + " WHERE ID = ? ";
 			PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
 			try {
@@ -67,7 +67,7 @@ public Vacina cadastrarVacina(Vacina novaVacina) {
 				int quantidadeLinhasAtualizadas = query.executeUpdate();
 				atualizou = quantidadeLinhasAtualizadas > 0;
 			} catch (SQLException excecao) {
-				System.out.println("Erro ao atualizar a pessoa. "
+				System.out.println("Erro ao atualizar a vacina. "
 				+ "\n Causa: " + excecao.getMessage());
 			}finally {
 				Banco.closePreparedStatement(query);
