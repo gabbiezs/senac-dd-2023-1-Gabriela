@@ -8,8 +8,8 @@ import model.exception.EnderecoInvalidoException;
 import model.vo.telefonia.Endereco;
 
 public class EnderecoBO {
-	
-private EnderecoDAO dao = new EnderecoDAO();
+
+	private EnderecoDAO dao = new EnderecoDAO();
 	
 	public Endereco inserir(Endereco novoEndereco) {
 		return dao.inserir(novoEndereco);
@@ -43,4 +43,3 @@ private EnderecoDAO dao = new EnderecoDAO();
 		return dao.consultarTodos();
 	}
 }
-
