@@ -10,12 +10,12 @@ public class TelefoneController {
 	private TelefoneBO bo = new TelefoneBO();
 	
 	public Telefone inserir(Telefone novoTelefone) {
-		//TODO validar o preenchimento dos campos obrigatórios
+		//TODO validar o preenchimento dos campos obrigat�rios
 		return bo.inserir(novoTelefone);
 	}
 	
 	public boolean atualizar(Telefone telefoneAlterado) {
-		//TODO validar o preenchimento dos campos obrigatórios
+		//TODO validar o preenchimento dos campos obrigat�rios
 		return bo.atualizar(telefoneAlterado);
 	}
 	

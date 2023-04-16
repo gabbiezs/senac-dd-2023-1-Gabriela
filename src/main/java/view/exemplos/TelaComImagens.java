@@ -1,3 +1,4 @@
+
 package view.exemplos;
 
 import java.awt.BorderLayout;
@@ -91,3 +92,4 @@ public class TelaComImagens extends JFrame {
 		contentPane.add(lblNomeArquivo);
 	}
 }
+

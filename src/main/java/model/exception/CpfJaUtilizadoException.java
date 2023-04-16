@@ -1,3 +1,4 @@
+
 package model.exception;
 
 public class CpfJaUtilizadoException extends Exception {
@@ -8,3 +9,4 @@ public class CpfJaUtilizadoException extends Exception {
 		super(mensagem);
 	}
 }
+

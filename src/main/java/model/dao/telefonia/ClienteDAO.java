@@ -203,7 +203,7 @@ public class ClienteDAO {
 			}
 			
 		}catch (Exception e) {
-			System.out.println("Erro contar os clientes que residem em um endereço. \n Causa:" + e.getMessage());
+			System.out.println("Erro contar os clientes que residem em um endere�o. \n Causa:" + e.getMessage());
 		}finally {
 			Banco.closePreparedStatement(query);
 			Banco.closeConnection(conexao);
@@ -212,3 +212,4 @@ public class ClienteDAO {
 		return totalClientesDoEnderecoBuscado;
 	}
 }
+

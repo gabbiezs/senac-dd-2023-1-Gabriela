@@ -1,3 +1,5 @@
+
+
 package view.telefonia;
 
 import java.awt.EventQueue;
@@ -18,7 +20,7 @@ public class TelaListagemEnderecos {
 	private JFrame frmListagemDeEnderecos;
 	private JTable tblEnderecos;
 	private ArrayList<Endereco> enderecos;
-	private String[] nomesColunas = { "#", "CEP", "Rua", "Número", "Bairro", "Cidade", "Estado" };
+	private String[] nomesColunas = { "#", "CEP", "Rua", "N�mero", "Bairro", "Cidade", "Estado" };
 	private JButton btnBuscar;
 
 	private void limparTabela() {
@@ -78,7 +80,7 @@ public class TelaListagemEnderecos {
 	 */
 	private void initialize() {
 		frmListagemDeEnderecos = new JFrame();
-		frmListagemDeEnderecos.setTitle("Listagem de Endereços");
+		frmListagemDeEnderecos.setTitle("Listagem de Endere�os");
 		frmListagemDeEnderecos.setBounds(100, 100, 700, 525);
 		frmListagemDeEnderecos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmListagemDeEnderecos.getContentPane().setLayout(null);
@@ -102,3 +104,4 @@ public class TelaListagemEnderecos {
 		frmListagemDeEnderecos.getContentPane().add(tblEnderecos);
 	}
 }
+

@@ -1,3 +1,4 @@
+
 package model.bo.telefonia;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class ClienteBO {
 	private ClienteDAO dao = new ClienteDAO();
 	
 	/**
-	 * Insere um novo cliente, mas faz validações que podem gerar exceções
+	 * Insere um novo cliente, mas faz valida��es que podem gerar exce��es
 	 * @param novoCliente
 	 * @return o novoCliente inserido, com a PK gerada
 	 * @throws CpfJaUtilizadoException
@@ -25,17 +26,17 @@ public class ClienteBO {
 	public Cliente inserir(Cliente novoCliente) throws CpfJaUtilizadoException, 
 			EnderecoInvalidoException {
 		if(dao.cpfJaUtilizado(novoCliente.getCpf())) {
-			throw new CpfJaUtilizadoException("CPF informado já foi utilizado");
+			throw new CpfJaUtilizadoException("CPF informado j� foi utilizado");
 		}
 		
 		validarEndereco(novoCliente);
 
-		//Caso CPF não utilizado -> salvar e devolver o cliente
+		//Caso CPF n�o utilizado -> salvar e devolver o cliente
 		return dao.inserir(novoCliente);
 	}
 	
 	/**
-	 * Atualiza um novo cliente, mas faz validações que podem gerar exceções
+	 * Atualiza um novo cliente, mas faz valida��es que podem gerar exce��es
 	 * @param cliente
 	 * @return o cliente atualizado
 	 * @throws CpfAlteradoException 
@@ -45,7 +46,7 @@ public class ClienteBO {
 		Cliente clienteOriginal = dao.consultarPorId(clienteAlterado.getId());
 		
 		if(clienteAlterado.getCpf() != clienteOriginal.getCpf()) {
-			throw new CpfAlteradoException("CPF não pode ser alterado");
+			throw new CpfAlteradoException("CPF n�o pode ser alterado");
 		}
 		
 		validarEndereco(clienteAlterado);
@@ -54,15 +55,15 @@ public class ClienteBO {
 	}
 	
 	/**
-	 * Não deixar excluir cliente que possua telefone associado
-	 * Criar exceção ClienteComTelefoneException
-	 * Caso cliente possua telefone(s): lançar ClienteComTelefoneException
-	 * Caso contrário: chamar dao.excluir(id)
+	 * N�o deixar excluir cliente que possua telefone associado
+	 * Criar exce��o ClienteComTelefoneException
+	 * Caso cliente possua telefone(s): lan�ar ClienteComTelefoneException
+	 * Caso contr�rio: chamar dao.excluir(id)
 	 * @param id
-	 * @return se excluiu ou não o cliente
+	 * @return se excluiu ou n�o o cliente
 	 */
 	public boolean excluir(int id) throws ClienteComTelefoneException {
-		//FORMA 1 DE RESOLUÇÃO
+		//FORMA 1 DE RESOLU��O
 		Cliente clienteBuscado = dao.consultarPorId(id);
 		
 		if(!clienteBuscado.getTelefones().isEmpty()) {
@@ -83,7 +84,8 @@ public class ClienteBO {
 	private void validarEndereco(Cliente cliente) throws EnderecoInvalidoException {
 		if(cliente.getEndereco() == null 
 				|| cliente.getEndereco().getId() == null) {
-			throw new EnderecoInvalidoException("Endereço não informado");
+			throw new EnderecoInvalidoException("Endere�o n�o informado");
 		}
 	}
 }
+

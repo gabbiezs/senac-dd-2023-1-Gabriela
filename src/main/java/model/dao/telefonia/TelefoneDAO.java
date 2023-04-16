@@ -15,7 +15,11 @@ public class TelefoneDAO {
 	/**
 	 * Insere um novo telefone no banco
 	 * @param novoTelefone o telefone a ser persistido
+<<<<<<< HEAD
 	 * @return o telefone inserido com a chave primária gerada
+=======
+	 * @return o telefone inserido com a chave prim�ria gerada
+>>>>>>> branch 'master' of https://github.com/gabbiezs/senac-dd-2023-1-Gabriela.git
 	 */
 	public Telefone inserir(Telefone novoTelefone) {
 		//Conectar ao banco
@@ -44,11 +48,10 @@ public class TelefoneDAO {
 			System.out.println("Erro ao inserir telefone. "
 					+ "\nCausa: " + e.getMessage());
 		}finally {
-			//Fechar a conexão
+			//Fechar a conex�o
 			Banco.closePreparedStatement(query);
 			Banco.closeConnection(conexao);
 		}
-		
 		return novoTelefone;
 	}
 	
@@ -62,6 +65,7 @@ public class TelefoneDAO {
 		PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
 		try {
 			query.setInt(1, telefoneEditado.getId());
+			query.setInt(1, telefoneEditado.getIdCliente());
 			query.setString(2, telefoneEditado.getDdd());
 			query.setString(3, telefoneEditado.getNumero());
 			query.setBoolean(4, telefoneEditado.isAtivo());
@@ -155,6 +159,7 @@ public class TelefoneDAO {
 		Telefone telefoneConsultado = new Telefone(); 
 		telefoneConsultado.setId(resultado.getInt("id"));
 		telefoneConsultado.setId(resultado.getInt("id_cliente"));
+		telefoneConsultado.setIdCliente(resultado.getInt("id_cliente"));
 		telefoneConsultado.setDdd(resultado.getString("ddd"));
 		telefoneConsultado.setNumero(resultado.getString("numero"));
 		telefoneConsultado.setAtivo(resultado.getBoolean("ativo"));
@@ -212,6 +217,24 @@ public class TelefoneDAO {
 	 * Desativa todos os telefones de um determinado cliente.
 	 * 
 	 * @param idCliente a chave primária do cliente
+=======
+			telefoneDoCliente.setIdCliente(idDono);
+			telefoneDoCliente.setAtivo(true);
+			if (telefoneDoCliente.getId() > 0) {
+				// UPDATE no Telefone
+				this.atualizar(telefoneDoCliente);
+			} else {
+				// INSERT no Telefone
+				this.inserir(telefoneDoCliente);
+			}
+		}
+	}
+
+	/**
+	 * Desativa todos os telefones de um determinado cliente.
+	 * 
+	 * @param idCliente a chave prim�ria do cliente
+>>>>>>> branch 'master' of https://github.com/gabbiezs/senac-dd-2023-1-Gabriela.git
 	 */
 	public void desativarTelefones(int idCliente) {
 		Connection conn = Banco.getConnection();

@@ -1,3 +1,4 @@
+
 package view.exemplos;
 
 import java.awt.event.KeyAdapter;
@@ -16,7 +17,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
 /**
- * Campo para a inserção de números com base em um formato.
+ * Campo para a inser��o de n�meros com base em um formato.
  *
  * @author Dyorgio da Silva Nascimento
  * 
@@ -38,9 +39,9 @@ public class JNumberFormatField extends JTextField {
 	}
 
 	public JNumberFormatField(NumberFormat format) {
-		// define o formato do número
+		// define o formato do n�mero
 		numberFormat = format;// alinhamento horizontal para o texto
-		setHorizontalAlignment(RIGHT);// documento responsável pela formatação
+		setHorizontalAlignment(RIGHT);// documento respons�vel pela formata��o
 		// do campo
 		setDocument(new PlainDocument() {
 			private static final long serialVersionUID = 1L;
@@ -74,7 +75,7 @@ public class JNumberFormatField extends JTextField {
 		addCaretListener(new CaretListener() {
 			boolean update = false;
 
-			@Override
+
 			public void caretUpdate(CaretEvent e) {
 				if (!update) {
 					update = true;
@@ -145,7 +146,7 @@ public class JNumberFormatField extends JTextField {
 			}
 			return builder.toString();
 		} else {
-			throw new RuntimeException("Número de casas decimais inválida (" + zeros + ")");
+			throw new RuntimeException("N�mero de casas decimais inv�lida (" + zeros + ")");
 		}
 	}
 
@@ -158,7 +159,7 @@ public class JNumberFormatField extends JTextField {
 
 	/***
 	 * Define o limite do campo, limit < 0 para deixar livre (default) Ignora os
-	 * pontos e virgulas do formato, conta* somente com os números** @param limit
+	 * pontos e virgulas do formato, conta* somente com os n�meros** @param limit
 	 */
 	public void setLimit(int limit) {
 		this.limit = limit;
@@ -180,3 +181,4 @@ public class JNumberFormatField extends JTextField {
 		frame.setVisible(true);
 	}
 }
+

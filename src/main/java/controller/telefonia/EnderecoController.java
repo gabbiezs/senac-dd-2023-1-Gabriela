@@ -1,4 +1,6 @@
+
 package controller.telefonia;
+
 import java.util.List;
 
 import model.bo.telefonia.EnderecoBO;
@@ -21,7 +23,7 @@ public class EnderecoController {
 		
 		mensagemValidacao += validarString(endereco.getCep(), "cep");
 		mensagemValidacao += validarString(endereco.getRua(), "rua");
-		mensagemValidacao += validarString(endereco.getNumero(), "número");
+		mensagemValidacao += validarString(endereco.getNumero(), "n�mero");
 		mensagemValidacao += validarString(endereco.getCidade(), "cidade");
 		mensagemValidacao += validarString(endereco.getEstado(), "estado");
 		

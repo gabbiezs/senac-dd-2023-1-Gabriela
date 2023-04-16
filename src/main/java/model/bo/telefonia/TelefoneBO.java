@@ -10,13 +10,13 @@ public class TelefoneBO {
 	private TelefoneDAO dao = new TelefoneDAO();
 	
 	public Telefone inserir(Telefone novoTelefone) {
-		novoTelefone.setAtivo(novoTelefone.getId() != null);
+		novoTelefone.setAtivo(novoTelefone.getIdCliente() != null);
 		
 		return dao.inserir(novoTelefone);
 	}
 	
 	public boolean atualizar(Telefone telefoneAlterado) {
-		telefoneAlterado.setAtivo(telefoneAlterado.getId() != null);
+		telefoneAlterado.setAtivo(telefoneAlterado.getIdCliente() != null);
 
 		return dao.atualizar(telefoneAlterado);
 	}

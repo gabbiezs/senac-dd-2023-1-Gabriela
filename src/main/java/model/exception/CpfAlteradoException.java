@@ -1,3 +1,4 @@
+
 package model.exception;
 
 public class CpfAlteradoException extends Exception {
@@ -11,3 +12,4 @@ public class CpfAlteradoException extends Exception {
 		super(mensagem);
 	}
 }
+

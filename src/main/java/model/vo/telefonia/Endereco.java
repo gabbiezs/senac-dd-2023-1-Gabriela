@@ -1,7 +1,7 @@
 package model.vo.telefonia;
 
 public class Endereco {
-		
+	
 	//Atributos
 		private Integer id;
 		private String cep;
@@ -98,12 +98,11 @@ public class Endereco {
 
 		@Override
 		public String toString() {
-			return getEnderecoResumido();
-//			return "Endereco [cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cidade="
-//					+ cidade + ", estado=" + estado + "]";
+			return "Endereco [cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cidade="
+					+ cidade + ", estado=" + estado + "]";
 		}
 
 		public String getEnderecoResumido() {
-			return rua + " nº" + numero + ", " + bairro + ", " + cidade + "/" + estado;
+			return rua + "nº" + numero + ", " + bairro + ", " + cidade + "/" + estado;
 		}
-}
+	}

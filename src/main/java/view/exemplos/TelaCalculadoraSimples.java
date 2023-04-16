@@ -1,3 +1,4 @@
+
 package view.exemplos;
 
 import java.awt.EventQueue;
@@ -242,7 +243,7 @@ public class TelaCalculadoraSimples {
 			case OPERACAO_SUBTRACAO:
 				resultado = getValor1() - getValor2();
 				break;
-			// TODO fazer as demais operações
+			// TODO fazer as demais opera��es
 			default:
 				break;
 		}
@@ -278,3 +279,4 @@ public class TelaCalculadoraSimples {
 		this.operacao = operacao;
 	}
 }
+

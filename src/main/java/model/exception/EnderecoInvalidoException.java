@@ -1,3 +1,4 @@
+
 package model.exception;
 
 public class EnderecoInvalidoException extends Exception {
@@ -8,3 +9,4 @@ public class EnderecoInvalidoException extends Exception {
 		super(mensagem);
 	}
 }
+

@@ -107,7 +107,7 @@ public class TelaCadastroTelefone {
 
 		btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e){
 				Telefone novoTelefone = new Telefone();
 				try {
 					String telefoneSemMascara = (String) mascaraTelefone.stringToValue(txtNumero.getText());
@@ -126,14 +126,10 @@ public class TelaCadastroTelefone {
 					novoTelefone.setAtivo(false);
 				}
 				TelefoneController controller = new TelefoneController();
-				try {
-					controller.inserir(novoTelefone);
+				controller.inserir(novoTelefone);
 
-					JOptionPane.showMessageDialog(null, "Telefone cadastrado com sucesso!", "Cadastro com sucesso!",
-							JOptionPane.INFORMATION_MESSAGE);
-				} catch (CampoInvalidoException e1) {
-					JOptionPane.showMessageDialog(null, e1.getMessage(), "Erro: ", JOptionPane.ERROR_MESSAGE);
-				}
+				JOptionPane.showMessageDialog(null, "Telefone cadastrado com sucesso!", "Cadastro com sucesso!",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		btnCadastrar.setBounds(214, 96, 109, 23);

@@ -1,3 +1,4 @@
+
 package model.exception;
 
 public class ClienteComTelefoneException extends Exception {

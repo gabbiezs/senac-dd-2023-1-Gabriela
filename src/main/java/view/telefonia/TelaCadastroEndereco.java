@@ -1,3 +1,4 @@
+
 package view.telefonia;
 
 import java.awt.EventQueue;
@@ -34,7 +35,7 @@ public class TelaCadastroEndereco {
 	private JComboBox cbEstado;
 	
 	//TODO chamar API ou backend futuramente
-	private String[] estados = {"Paraná", "Rio Grande do Sul", "Santa Catarina"};
+	private String[] estados = {"Paran�", "Rio Grande do Sul", "Santa Catarina"};
 
 	/**
 	 * Launch the application.
@@ -64,7 +65,7 @@ public class TelaCadastroEndereco {
 	 */
 	private void initialize() {
 		frmCadastroDeEndereco = new JFrame();
-		frmCadastroDeEndereco.setTitle("Cadastro de endereço");
+		frmCadastroDeEndereco.setTitle("Cadastro de endere�o");
 		frmCadastroDeEndereco.setBounds(100, 100, 380, 240);
 		frmCadastroDeEndereco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCadastroDeEndereco.getContentPane().setLayout(null);
@@ -90,7 +91,7 @@ public class TelaCadastroEndereco {
 		lblCidade.setBounds(15, 90, 45, 14);
 		frmCadastroDeEndereco.getContentPane().add(lblCidade);
 		
-		lblNumero = new JLabel("Número:");
+		lblNumero = new JLabel("N�mero:");
 		lblNumero.setBounds(15, 115, 45, 14);
 		frmCadastroDeEndereco.getContentPane().add(lblNumero);
 		
@@ -140,7 +141,7 @@ public class TelaCadastroEndereco {
 				} catch (CampoInvalidoException e) {
 					JOptionPane.showMessageDialog(null, 
 							"Preencha os seguintes campos: \n" + e.getMessage(), 
-							"Atenção", JOptionPane.WARNING_MESSAGE);
+							"Aten��o", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
@@ -151,3 +152,4 @@ public class TelaCadastroEndereco {
 	
 	}
 }
+

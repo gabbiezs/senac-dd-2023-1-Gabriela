@@ -1,3 +1,4 @@
+
 package view.telefonia;
 
 import java.awt.EventQueue;
@@ -29,12 +30,12 @@ public class TelaListagemClientes {
 	private JFrame frmListagemDeClientes;
 	private JTable tblClientes;
 	private ArrayList<Cliente> clientes;
-	private String[] nomesColunas = { "Nome", "CPF", "Endereço", "Total de Telefones", "Ativo?" };
+	private String[] nomesColunas = { "Nome", "CPF", "Endere�o", "Total de Telefones", "Ativo?" };
 	private JTextField txtNome;
 	private MaskFormatter mascaraCpf;
 	private JFormattedTextField txtCPF;
 	
-	//componentes externos -> dependência "LGoodDatePicker" foi adicionada no pom.xml
+	//componentes externos -> depend�ncia "LGoodDatePicker" foi adicionada no pom.xml
 	private DatePicker dtNascimentoInicial;
 	private DatePicker dtNascimentoFinal;
 	private JButton btnEditar;
@@ -65,7 +66,7 @@ public class TelaListagemClientes {
 			novaLinhaDaTabela[1] = c.getCpf();
 			novaLinhaDaTabela[2] = c.getEndereco().getEnderecoResumido();
 			novaLinhaDaTabela[3] = c.getTelefones().size();
-			novaLinhaDaTabela[4] = c.isAtivo() ? "Sim" : "Não";
+			novaLinhaDaTabela[4] = c.isAtivo() ? "Sim" : "N�o";
 
 			model.addRow(novaLinhaDaTabela);
 		}
@@ -172,7 +173,7 @@ public class TelaListagemClientes {
 		dtNascimentoInicial.setBounds(150, 55, 450, 30);
 		frmListagemDeClientes.getContentPane().add(dtNascimentoInicial);
 
-		lblAte = new JLabel("Até:");
+		lblAte = new JLabel("At�:");
 		lblAte.setBounds(25, 90, 175, 10);
 		frmListagemDeClientes.getContentPane().add(lblAte);
 
@@ -204,11 +205,11 @@ public class TelaListagemClientes {
 		btnEditar = new JButton("Editar");
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO exemplo de lógica para edição
+				// TODO exemplo de l�gica para edi��o
 				int linhaSelecionadaNaTabela = tblClientes.getSelectedRow();
 				Cliente clienteSelecionado = clientes.get(linhaSelecionadaNaTabela - 1);
 
-				JOptionPane.showMessageDialog(null, "Chamar a tela de edição e passar o objeto clienteSelecionado...");
+				JOptionPane.showMessageDialog(null, "Chamar a tela de edi��o e passar o objeto clienteSelecionado...");
 			}
 		});
 		btnEditar.setBounds(350, 500, 200, 45);
@@ -216,3 +217,4 @@ public class TelaListagemClientes {
 		frmListagemDeClientes.getContentPane().add(btnEditar);
 	}
 }
+

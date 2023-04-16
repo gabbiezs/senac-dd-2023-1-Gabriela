@@ -23,7 +23,7 @@ public class EnderecoBO {
 		ClienteDAO clienteDAO = new ClienteDAO();
 		
 		if(clienteDAO.contarClientesQueResidemNoEndereco(id) > 0) {
-			throw new EnderecoInvalidoException("Endereço não pode ser excluído, pois possui cliente(s) associado(s)");
+			throw new EnderecoInvalidoException("Endere�o n�o pode ser exclu�do, pois possui cliente(s) associado(s)");
 		}
 		
 		return dao.excluir(id);
@@ -43,3 +43,4 @@ public class EnderecoBO {
 		return dao.consultarTodos();
 	}
 }
+

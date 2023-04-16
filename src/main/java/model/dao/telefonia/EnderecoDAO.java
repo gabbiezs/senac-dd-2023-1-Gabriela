@@ -15,7 +15,11 @@ public class EnderecoDAO {
 	/**
 	 * Insere um novo endereco no banco
 	 * @param novoEndereco o endereco a ser persistido
+<<<<<<< HEAD
 	 * @return o endereco inserido com a chave primária gerada
+=======
+	 * @return o endereco inserido com a chave prim�ria gerada
+>>>>>>> branch 'master' of https://github.com/gabbiezs/senac-dd-2023-1-Gabriela.git
 	 */
 	public Endereco inserir(Endereco novoEndereco) {
 		//Conectar ao banco
@@ -46,7 +50,7 @@ public class EnderecoDAO {
 			System.out.println("Erro ao inserir endereço. "
 					+ "\nCausa: " + e.getMessage());
 		}finally {
-			//Fechar a conexão
+			//Fechar a conex�o
 			Banco.closePreparedStatement(query);
 			Banco.closeConnection(conexao);
 		}

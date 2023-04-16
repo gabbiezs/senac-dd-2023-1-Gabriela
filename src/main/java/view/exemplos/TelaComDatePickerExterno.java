@@ -1,3 +1,4 @@
+
 package view.exemplos;
 
 import java.awt.EventQueue;
@@ -20,7 +21,7 @@ public class TelaComDatePickerExterno {
 
 	private JFrame frame;
 	private JLabel lblData;
-
+	
 	//FONTE: https://github.com/LGoodDatePicker/LGoodDatePicker	
 	private DatePickerSettings dateSettings;
 	private DateTimePicker dataTeste;
@@ -60,7 +61,7 @@ public class TelaComDatePickerExterno {
 		lblData.setBounds(10, 64, 40, 20);
 		frame.getContentPane().add(lblData);
 
-		// Configurações da parte de DATAS do componente
+		// Configura��es da parte de DATAS do componente
 		dateSettings = new DatePickerSettings();
 		dateSettings.setAllowKeyboardEditing(false);
 
@@ -71,16 +72,16 @@ public class TelaComDatePickerExterno {
 		btnPegarData = new JButton("Criar data");
 		btnPegarData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// Atributos próprios do componente datePicker (date e time)
+				// Atributos pr�prios do componente datePicker (date e time)
 				LocalDate dataSelecionada = dataTeste.getDatePicker().getDate();
 				LocalTime horaSelecionada = dataTeste.getTimePicker().getTime();
-
+				
 				LocalDateTime dataComHora = LocalDateTime.of(dataSelecionada, horaSelecionada);
 
 				JOptionPane.showMessageDialog(null, "Data selecionada: " + dataSelecionada.toString());
-				JOptionPane.showMessageDialog(null, "Horário selecionado: " + horaSelecionada.toString());
+				JOptionPane.showMessageDialog(null, "Hor�rio selecionado: " + horaSelecionada.toString());
 				JOptionPane.showMessageDialog(null, "Data e hora selecionada: " + dataComHora.toString());
-
+				
 				//Exemplo com java.util.Date (antigo)
 //				new Date(dataSelecionada.getYear(), dataSelecionada.getMonthValue(),
 //						dataSelecionada.getDayOfMonth(), horaSelecionada.getHour(), horaSelecionada.getMinute(),
@@ -91,3 +92,4 @@ public class TelaComDatePickerExterno {
 		frame.getContentPane().add(btnPegarData);
 	}
 }
+

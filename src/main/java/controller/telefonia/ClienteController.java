@@ -22,7 +22,7 @@ public class ClienteController {
 	}
 	
 	public boolean atualizar(Cliente clienteAlterado) throws EnderecoInvalidoException, CpfAlteradoException {
-		//TODO validar o preenchimento dos campos obrigatórios
+		//TODO validar o preenchimento dos campos obrigat�rios
 		return bo.atualizar(clienteAlterado);
 	}
 	
@@ -30,13 +30,13 @@ public class ClienteController {
 		String mensagemValidacao = "";
 		
 		if(c.getNome() == null || c.getNome().trim().length() < 2) {
-			mensagemValidacao += "Nome inválido \n";
+			mensagemValidacao += "Nome inv�lido \n";
 		}
 		
 		mensagemValidacao += validarCpf(c);
 		
 		if(c.getEndereco() == null) {
-			mensagemValidacao += "Informe um endereço\n";
+			mensagemValidacao += "Informe um endere�o\n";
 		}		
 		
 		if(!mensagemValidacao.isEmpty()) {
@@ -54,7 +54,7 @@ public class ClienteController {
 			cpfSemMascara = c.getCpf().replace("-", "");
 			c.setCpf(cpfSemMascara);
 			if(c.getCpf().length() != 11) {
-				validacao += "CPF deve possuir 11 dígitos\n" ;	
+				validacao += "CPF deve possuir 11 d�gitos\n" ;	
 			}
 			
 //			try {
@@ -62,7 +62,7 @@ public class ClienteController {
 //			} catch (NumberFormatException ex) {
 //				
 //				//TODO conferir
-//				validacao += "CPF deve possuir somente números\n";
+//				validacao += "CPF deve possuir somente n�meros\n";
 //			}
 		}
 		
@@ -81,3 +81,4 @@ public class ClienteController {
 		return bo.consultarTodos();
 	}
 }
+
