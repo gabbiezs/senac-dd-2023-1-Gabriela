@@ -34,14 +34,5 @@ public class executavelTelefonia {
 		for(Cliente c: clientes) {
 			System.out.println(c.toString());
 		}
-		
-		EnderecoDAO salvadorDeEndereco = new EnderecoDAO();
-		salvadorDeEndereco.inserirEndereco(endereco1);
-		
-		TelefoneDAO salvadorDeTelefone = new TelefoneDAO();
-		salvadorDeTelefone.inserirTelefone(tel1);
-		
-
 	}
-
 }
