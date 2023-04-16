@@ -35,7 +35,7 @@ public class TelefoneDAO {
 				} catch (SQLException e) {
 					System.out.println("Erro ao inserir telefone. \nCausa: " + e.getMessage());
 				} finally {
-					//Fechar a conexão
+					//Fechar a conexï¿½o
 					Banco.closePreparedStatement(query);
 					Banco.closeConnection(conexao);
 				}
