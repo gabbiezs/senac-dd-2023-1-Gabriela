@@ -23,7 +23,8 @@ public class EnderecoController {
 		
 		mensagemValidacao += validarString(endereco.getCep(), "cep");
 		mensagemValidacao += validarString(endereco.getRua(), "rua");
-		mensagemValidacao += validarString(endereco.getNumero(), "n�mero");
+		mensagemValidacao += validarString(endereco.getNumero(), "numero");
+		mensagemValidacao += validarString(endereco.getBairro(), "bairro");
 		mensagemValidacao += validarString(endereco.getCidade(), "cidade");
 		mensagemValidacao += validarString(endereco.getEstado(), "estado");
 		

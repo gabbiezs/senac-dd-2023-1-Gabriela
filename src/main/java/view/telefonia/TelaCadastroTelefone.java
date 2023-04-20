@@ -71,11 +71,11 @@ public class TelaCadastroTelefone {
 		frmCadastroDeTelefone.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCadastroDeTelefone.getContentPane().setLayout(null);
 
-		lblNumero = new JLabel("Número:");
+		lblNumero = new JLabel("Numero:");
 		lblNumero.setBounds(15, 14, 65, 14);
 		frmCadastroDeTelefone.getContentPane().add(lblNumero);
 
-		lblMovel = new JLabel("Móvel:");
+		lblMovel = new JLabel("Movel:");
 		lblMovel.setBounds(15, 39, 65, 14);
 		frmCadastroDeTelefone.getContentPane().add(lblMovel);
 
