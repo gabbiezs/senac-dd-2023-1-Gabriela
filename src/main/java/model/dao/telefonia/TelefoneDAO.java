@@ -252,4 +252,33 @@ public class TelefoneDAO {
 			System.out.println("Erro: " + e.getMessage());
 		}
 	}
+	
+	public boolean telefoneJaCadastrado(String ddd, String numero) {
+		boolean telefoneJaCadastrado = false;
+		Connection conexao = Banco.getConnection();
+		String sql =  " SELECT count(*) FROM TELEFONE "
+				    + " WHERE DDD = ?"
+				    + " AND NUMERO = ?";
+		PreparedStatement query = Banco.getPreparedStatement(conexao, sql);
+		
+		try {
+			query.setString(1, ddd);
+			query.setString(2, numero);
+			ResultSet resultado = query.executeQuery();
+			
+			if(resultado.next()) {
+				//Obtém o valor da primeira coluna do SELECT (a contagem de resultados)
+				int quantidadeTelefones = resultado.getInt(1);
+				telefoneJaCadastrado = quantidadeTelefones > 0;
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro ao verificar se telefone já foi cadastrado."
+								+ "\n Causa: " + e.getMessage());	
+		}finally {
+			Banco.closePreparedStatement(query);
+			Banco.closeConnection(conexao);
+		}
+		
+		return telefoneJaCadastrado;
+	}
 }
